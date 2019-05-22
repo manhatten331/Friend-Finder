@@ -10,20 +10,12 @@ module.exports = function (app) {
     app.post("/data/friends", function (req, res) {
         var newUser = req.body;
 
-        var elonScore = friendsData.scores;
-
-        //match.push(newUser);
-
-        //console.log(newUser)
-
-        //totalDifference = 0;
-
         for (var i = 0; i  < newUser.scores.length ; i++) {
            newUser.scores[i] = parseInt(newUser.scores[i]);
         }
 
         var Index = 0;
-        var minDiff = 40;
+        var maxDiff = 40;
         
         for (var i = 0; i < match.length; i++) {
             var totalDifference = 0;
@@ -34,9 +26,9 @@ module.exports = function (app) {
                 //console.log(totalDifference);
             }
             
-            if (totalDifference < minDiff) {
+            if (totalDifference < maxDiff) {
                 Index = i;
-                minDiff = totalDifference;
+                maxDiff = totalDifference;
                 //console.log(minDiff);
                 //console.log(totalDifference);
             }
